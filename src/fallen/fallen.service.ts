@@ -7,7 +7,8 @@ import { FallenService } from './interface/FallenService';
 export class FallenServiceImpl implements FallenService {
 
     async createSignal(dto: FallenRequestDto): Promise<FallenResponseDto> {
-        console.log(`${dto.label} detected!!`)
+        console.log(`${dto.label} detected!!`);
+        console.log(dto);
 
         return new FallenResponseDto.Builder()
             .setStatus("success")
