@@ -10,8 +10,9 @@ export class HardhatServiceImpl implements HardhatService {
 
     async createSignal(dto: HardhatRequestDto): Promise<HardhatResponseDto> {
         console.log(`${dto.label} detected!!`);
+        console.log(Date.now());
 
-        this.snsService.triggerTopic(`${dto.detectedNum} hardhat workers detected!`)
+        //this.snsService.triggerTopic(`${dto.detectedNum} hardhat workers detected!`)
 
         return new HardhatResponseDto.Builder()
             .setStatus("success")
