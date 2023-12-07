@@ -18,6 +18,7 @@ export class CooldownGuard implements CanActivate {
 
     const { endpoint, cooltime } = cooldownMetadata;
     if (!this.cooldownService.canSnsTrigger(endpoint, cooltime * 1000)) {
+      console.log('Cooldown period has not elapsed.');
       throw new ForbiddenException('Cooldown period has not elapsed.');
     }
 
