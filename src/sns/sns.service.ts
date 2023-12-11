@@ -10,8 +10,8 @@ export class SnsService {
     constructor() {
         this.sns = new SNS({
             region: process.env.AWS_SNS_REGION,
-            accessKeyId: process.env.AWS_SNS_ACCESS_KEY_ID,
-            secretAccessKey: process.env.AWS_SNS_SECRET_ACCESS_KEY
+            accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
         });
     }
 
@@ -20,10 +20,6 @@ export class SnsService {
             Message: message,
             TopicArn: process.env.AWS_SNS_TOPIC_ARN
         };
-
-        console.log(process.env.AWS_SNS_REGION);
-        console.log(process.env.AWS_SNS_ACCESS_KEY_ID);
-        console.log(process.env.AWS_SNS_SECRET_ACCESS_KEY);
 
         try{
             const result = await this.sns.publish(params).promise();
