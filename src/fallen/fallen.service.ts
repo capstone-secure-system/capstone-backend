@@ -15,7 +15,7 @@ export class FallenServiceImpl implements FallenService {
     async createSignal(dto: FallenRequestDto,snapShotUrl : String): Promise<FallenResponseDto> {
         console.log(`${dto.label} ${dto.detectedNum} detected!! ${Date.now()}`);
 
-        //this.snsService.triggerTopic(`${dto.detectedNum} fallen workers detected!`);
+        this.snsService.triggerTopic(`${dto.detectedNum} fallen workers detected! \n detect image :  ${snapShotUrl}`);
         this.dynamoDbService.putItem(snapShotUrl,dto.label);
 
         return new FallenResponseDto.Builder()
