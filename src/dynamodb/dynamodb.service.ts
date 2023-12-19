@@ -14,12 +14,13 @@ export class DynamodbService {
      });
     }
 
-    async putItem(imageUrl : String,label : String) {
+    async putItem(imageUrl : String,label : String,detectedNum: number) {
         const snapshot = new SnapShot(
             new Date().getMilliseconds().toString(),
             new Date().toISOString(),
             label,
-            imageUrl
+            imageUrl,
+            detectedNum
         )
 
         const params = {
@@ -30,6 +31,28 @@ export class DynamodbService {
         try {
             await this.dynamoDb.put(params).promise();
         } catch(error) {
+            throw error;
+        }
+    }
+
+    async findItemsByLabel(label: string): Promise<any[]> {
+        const params = {
+            TableName: "capstone-DB",
+            IndexName: "index-label",
+            KeyConditionExpression: "#lbl = :label",
+            ExpressionAttributeNames: {
+                "#lbl" : "label",
+            },
+            ExpressionAttributeValues: {
+                ":label": label,
+            }
+        };
+
+        try {
+            const items = await this.dynamoDb.query(params).promise();
+            return items.Items || [];
+        } catch(error) {
+            console.error(error);
             throw error;
         }
     }

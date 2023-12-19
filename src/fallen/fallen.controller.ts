@@ -24,4 +24,9 @@ export class FallenController {
         const snapShotUrl = await this.s3Service.uploadFile(file);
         return this.fallenService.createSignal(dto,snapShotUrl);
     }
+
+    @Get()
+    async getFallenSnapShot(): Promise<FallenResponseDto[]> {
+        return this.fallenService.findAllSnapShot();
+    }
 }
