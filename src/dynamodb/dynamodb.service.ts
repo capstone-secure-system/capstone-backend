@@ -15,8 +15,10 @@ export class DynamodbService {
     }
 
     async putItem(imageUrl : String,label : String,detectedNum: number) {
+        const snapshotId = new Date().getMilliseconds().toString()
+
         const snapshot = new SnapShot(
-            new Date().getMilliseconds().toString(),
+            snapshotId,
             new Date().toISOString(),
             label,
             imageUrl,
@@ -45,7 +47,7 @@ export class DynamodbService {
             },
             ExpressionAttributeValues: {
                 ":label": label,
-            }
+            },
         };
 
         try {

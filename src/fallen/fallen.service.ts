@@ -26,7 +26,6 @@ export class FallenServiceImpl implements FallenService {
 
     async findAllSnapShot(): Promise<FallenResponseDto[]> {
         const items =  await this.dynamoDbService.findItemsByLabel("Fall-Detected");
-        console.log(items);
         const responseList: FallenResponseDto[] = [];
 
         items.forEach(item => {
@@ -38,6 +37,10 @@ export class FallenServiceImpl implements FallenService {
                                 .setImgUrl(item.imageUrl)
                                 .build();
             responseList.push(responseDto);
+        });
+
+        responseList.sort((a, b) => {
+            return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
         });
 
         return responseList;
