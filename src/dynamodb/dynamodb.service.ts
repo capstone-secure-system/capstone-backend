@@ -37,6 +37,19 @@ export class DynamodbService {
         }
     }
 
+    async findAll(): Promise<any> {
+        const params = {
+          TableName: 'capstone-DB', 
+        };
+    
+        try {
+          const data = await this.dynamoDb.scan(params).promise();
+          return data.Items;
+        } catch (error) {
+          throw new Error(`Error retrieving data: ${error}`);
+        }
+      }
+
     async findItemsByLabel(label: string): Promise<any[]> {
         const params = {
             TableName: "capstone-DB",

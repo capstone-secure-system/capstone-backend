@@ -1,5 +1,5 @@
 export class FallenResponseDto {
-    snapShotId: string;
+    snapshotId: string;
     status: string;
     label: string;
     createdAt: Date;
@@ -14,8 +14,8 @@ export class FallenResponseDto {
             this.response = new FallenResponseDto();
         }
 0
-        setSnapShotId(snapShotId: string): this {
-            this.response.snapShotId = snapShotId;
+        setSnapShotId(snapshotId: string): this {
+            this.response.snapshotId = snapshotId;
             return this;
         }
 
