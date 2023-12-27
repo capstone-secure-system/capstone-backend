@@ -1,73 +1,26 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 객체 탐지를 통한 예인 수조 안전시스템
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+### 프로젝트 소개
+백엔드 개발 및 Yolov5 fine-tuning : 총 1인
+하드웨어 개발 : 총 1인
+프론트엔드 개발 : 총 1인
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+environment : Github, Google Colab, Visual Studio Code, Linux
 
-## Description
+hardware : Raspberry Pi 4, web cam
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Object detection : ultralytics/yolov5
 
-## Installation
+backend tech : NestJS
 
-```bash
-$ npm install
-```
+frontend tech : React JS
 
-## Running the app
+devops tech : EC2, DynamoDB (using DynamoDB Streams),AWS Lambda, AWS SNS & SMS, AWS Lambda
 
-```bash
-# development
-$ npm run start
+해당 프로젝트는 예인 수조 작업장 환경에서 작업자가 쓰러진 경우 제빠른 대처를 통한 인명사고 방지하기 위해 고안되었으며, AI와 클라우드를 결합하여 직업자의 신변 안전을 보장 할 수 있도록 개발된 프로젝트입니다.
+작업자 쓰러짐 감지시 관련 정보를 서버에 전송하고, 관계자들에게 비상상황 알림 문자를 발송합니다.
+기존 쓰러짐 탐지 정보 로그를 확인할 수 있도록 데이터베이스에 영속하여 관리자 페이지를 통해 확인할 수 있도록 합니다.
 
-# watch mode
-$ npm run start:dev
 
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+### Overall Architecture
+![capstone-architecture drawio](https://github.com/capstone-secure-system/capstone-backend/assets/80220062/ceea4cbf-c3bf-4999-a204-c27f6d8bcdd5)
